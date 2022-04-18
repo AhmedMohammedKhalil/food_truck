@@ -1,4 +1,4 @@
-@extends('users.layout')
+@extends('admins.layout')
 @push('title')
 <!-- Start Page Title Area -->
 <div class="page-title-area item-bg-1">
@@ -6,7 +6,7 @@
         <div class="d-table-cell">
             <div class="container">
                 <div class="page-title-content">
-                    <h2>إضافة عربة طعام</h2>
+                    <h2>تعديل منطقة</h2>
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
 <div class="sign-in-area">
     <div class="container">
         <div class="sign-in-form">
-            <livewire:user.add-food-truck />
+            <livewire:admin.edit-region :region="$region"/>
         </div>
     </div>
 </div>

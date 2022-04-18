@@ -42,6 +42,11 @@
         input[type='file']{
             height: auto !important;
         }
+
+        .cart-buttons .default-btn:hover {
+            background-color: black
+        }
+
     </Style>
     @stack('css')
     <title>{{ config('app.name', 'Food Truck KW') }}</title>

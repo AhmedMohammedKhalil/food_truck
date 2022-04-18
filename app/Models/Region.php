@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Region extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function locations() {
+        return $this->hasMany(TruckLocation::class,'region_id');
+    }
 }

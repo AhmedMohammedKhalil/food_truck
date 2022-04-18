@@ -120,6 +120,21 @@ jQuery(function($) {
         fixedContentPos: false
     });
 
+    $('.single-gallery').magnificPopup({
+        type: 'image',
+    });
+
+    $('.gallery').magnificPopup({
+        delegate: 'a',
+        type: 'image',
+         gallery:{
+            enabled: true,
+            Prev: 'Previous (Left arrow key)',
+            tNext: 'Next (Right arrow key)',
+            tCounter: '%curr% من %total%'
+        }
+    });
+
     // Odometer JS
     $('.odometer').appear(function(e) {
         var odo = $(".odometer");
@@ -263,7 +278,7 @@ jQuery(function($) {
         }
         $("#validator-newsletter").removeClass().addClass(msgClasses).text(msg);
     }
-    
+
 
     // List Slider
     $('.list-slider').owlCarousel({

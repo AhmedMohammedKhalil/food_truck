@@ -18,7 +18,10 @@ class FoodTruck extends Model
         'name',
         'description',
         'phone',
-        'work_time',
+        'license_no',
+        'facebook',
+        'status',
+        'worktime',
         'user_id'
     ];
 
@@ -50,5 +53,14 @@ class FoodTruck extends Model
     public function location()
     {
         return $this->hasOne(TruckLocation::class, 'ft_id');
+    }
+
+    public function scopeLogo() {
+        return $this->images()->where('image_type','logo')->first();
+    }
+
+    public function scopeMenu()
+    {
+        return $this->images()->where('image_type', 'menu')->get();
     }
 }
