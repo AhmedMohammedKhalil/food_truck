@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico') }}" type="image/x-icon">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -45,6 +46,22 @@
 
         .cart-buttons .default-btn:hover {
             background-color: black
+        }
+
+        .page-title-area {
+            background-position: unset
+        }
+
+        .nice-select, .nice-select option , .nice-select ul li{
+            text-align: right !important;
+            padding-right: 15px
+        }
+
+        .nice-select ul {right:0; left: unset !important;}
+
+        .nice-select:after{
+            right: unset !important;
+            left: 12px !important;
         }
 
     </Style>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FoodTruck;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,6 +16,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $foodtrucks = FoodTruck::where('status',1)->get();
+        return view('home',compact('foodtrucks'));
+    }
+
+    public function showtruckDetails(Request $r) {
+        $foodtruck = FoodTruck::whereId($r->id)->first();
+        return view('truckdetails', compact('foodtruck'));
     }
 }

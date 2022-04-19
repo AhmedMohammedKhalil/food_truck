@@ -108,7 +108,7 @@ jQuery(function($) {
     });
 
     // Nice Select JS
-    $('select').niceSelect();
+    // $('select').niceSelect();
 
     // Popup Video
     $('.popup-youtube').magnificPopup({

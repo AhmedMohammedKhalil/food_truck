@@ -151,7 +151,48 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="menu-bar">
-
+                                            @if($food_truck->location)
+                                                <div class="products-details-tab-content">
+                                                    <ul class="additional-information">
+                                                        <li>
+                                                            <span>المنطقة : </span> {{ $food_truck->location->region->name }}
+                                                        </li>
+                                                        <li>
+                                                            <span>البلوك : </span> {{ $food_truck->location->block }}
+                                                        </li>
+                                                        <li>
+                                                            <span>الشارع : </span> {{ $food_truck->location->streat }}
+                                                        </li>
+                                                        <li>
+                                                            <span>المنزل : </span> {{ $food_truck->location->house }}
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="cart-buttons mb-3">
+                                                    <div class="align-items-center d-flex justify-content-center">
+                                                        <div class="">
+                                                            <a href="{{ route('user.food_truck.location.edit',['id'=>$food_truck->location->id]) }}" class="default-btn">
+                                                                تعديل
+                                                                <span></span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @else
+                                                <div>
+                                                    <span class="d-block text-center">لا يوجد مكان للعربة</span>
+                                                </div>
+                                                <div class="cart-buttons mb-3">
+                                                    <div class="align-items-center d-flex justify-content-center">
+                                                        <div class="">
+                                                            <a href="{{ route('user.food_truck.location.create') }}" class="default-btn">
+                                                                إضافة المكان
+                                                                <span></span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
                                     </div>
                                 </div>
                             </div>

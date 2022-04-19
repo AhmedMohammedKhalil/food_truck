@@ -48,6 +48,6 @@ class User extends Authenticatable
 
     public function food_truck()
     {
-        return $this->hasOne(FoodTruck::class, 'user_id');
+        return $this->hasOne(FoodTruck::class);
     }
 }

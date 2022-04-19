@@ -16,16 +16,21 @@ class TruckLocation extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'address',
-        'location_region',
-        'latitude',
-        'longitude',
-        'ft_id'
+        'region_id',
+        'ft_id',
+        'streat',
+        'block',
+        'house'
     ];
 
 
     public function food_truck()
     {
         return $this->belongsTo(FoodTruck::class, 'ft_id');
+    }
+
+    public function region() {
+        return $this->belongsTo(Region::class, 'region_id');
+
     }
 }

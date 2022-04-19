@@ -5,10 +5,13 @@
                 <a href="{{ route('admin.dashboard') }}">لوحة التحكم</a>
             </li>
             <li>
-                <a href="{{ route('admin.profile') }}">البروفايل</a>
+                <a href="{{ route('admin.regions.index') }}">المناطق</a>
             </li>
             <li>
-                <a href="{{ route('admin.regions.index') }}">المناطق</a>
+                <a href="{{ route('admin.foodtrucks.all') }}">عربات الطعام</a>
+            </li>
+            <li>
+                <a href="{{ route('admin.profile') }}">البروفايل</a>
             </li>
             <li>
                 <a href="{{ route('admin.settings') }}">الإعدادت</a>
