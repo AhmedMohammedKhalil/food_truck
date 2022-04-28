@@ -18,27 +18,32 @@ class FoodTruck extends Model
         'name',
         'description',
         'phone',
-        'work_time',
+        'license_no',
+        'facebook',
+        'status',
+        'worktime',
         'user_id'
     ];
 
 
 
-    public function rate()
+    public function rates()
     {
-        return $this->belongsToMany(Rate::class, 'rates','ft_id')
+        return $this->belongsToMany(User::class, 'rates','ft_id')
+        ->withPivot('rate')
         ->withTimestamps();
     }
 
-    public function follow()
+    public function followers()
     {
-        return $this->belongsToMany(Follow::class, 'follows','ft_id')
+        return $this->belongsToMany(User::class, 'follows','ft_id')
+        ->withPivot('readable')
         ->withTimestamps();
     }
 
     public function owner()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 
 
@@ -50,5 +55,14 @@ class FoodTruck extends Model
     public function location()
     {
         return $this->hasOne(TruckLocation::class, 'ft_id');
+    }
+
+    public function scopeLogo() {
+        return $this->images()->where('image_type','logo')->first();
+    }
+
+    public function scopeMenu()
+    {
+        return $this->images()->where('image_type', 'menu')->get();
     }
 }

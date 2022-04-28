@@ -7,7 +7,7 @@
         @endif
         <div class="col-lg-12">
             <div class="form-group">
-                <input type="name" wire:model.lazy='name' class="form-control" placeholder="الإسم">
+                <input type="text" wire:model.lazy='name' class="form-control" placeholder="الإسم">
                 @error('name') <span class="text-danger error">{{ $message }}</span>@enderror
             </div>
         </div>

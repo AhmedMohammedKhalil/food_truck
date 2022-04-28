@@ -3,84 +3,72 @@
 namespace App\Http\Controllers;
 
 use App\Models\FoodTruck;
-use App\Http\Requests\StoreFoodTruckRequest;
-use App\Http\Requests\UpdateFoodTruckRequest;
+use Illuminate\Http\Request;
 
 class FoodTruckController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $food_truck = auth('user')->user()->food_truck;
+        return view('users.food_truck.index',compact('food_truck'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        return view('users.food_truck.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreFoodTruckRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreFoodTruckRequest $request)
+    public function menuCreate()
     {
-        //
+        $foodtruck = auth('user')->user()->food_truck;
+        return view('users.food_truck.add-menu', compact('foodtruck'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\FoodTruck  $foodTruck
-     * @return \Illuminate\Http\Response
-     */
-    public function show(FoodTruck $foodTruck)
+
+
+
+    public function edit()
     {
-        //
+        $foodtruck = auth('user')->user()->food_truck;
+        return view('users.food.edit-menu',compact('foodtruck'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\FoodTruck  $foodTruck
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(FoodTruck $foodTruck)
+
+    public function menuEdit()
     {
-        //
+        $foodtruck = auth('user')->user()->food_truck;
+        return view('users.food_truck.edit-menu', compact('foodtruck'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateFoodTruckRequest  $request
-     * @param  \App\Models\FoodTruck  $foodTruck
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateFoodTruckRequest $request, FoodTruck $foodTruck)
-    {
-        //
+
+    public function allFoodTrucks() {
+        $newfoodtrucks = FoodTruck::where('status',0)->get();
+        $rejectfoodtrucks = FoodTruck::where('status',2)->get();
+        $acceptfoodtrucks = FoodTruck::where('status', 1)->get();
+
+        return view('admins.foodtrucks.all', compact('newfoodtrucks', 'rejectfoodtrucks', 'acceptfoodtrucks'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\FoodTruck  $foodTruck
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(FoodTruck $foodTruck)
+    public function showFoodTruck(Request $r)
     {
-        //
+        $foodtruck = FoodTruck::whereId($r->id)->first();
+        return view('admins.foodtrucks.show', compact('foodtruck'));
     }
+
+    public function acceptFoodTruck(Request $r)
+    {
+        FoodTruck::whereId($r->id)->update(['status' => 1]);
+        return redirect()->route('admin.foodtrucks.all');
+    }
+
+    public function rejectFoodTruck(Request $r)
+    {
+        FoodTruck::whereId($r->id)->update(['status'=> 2]);
+        return redirect()->route('admin.foodtrucks.all');
+
+    }
+
+
 }

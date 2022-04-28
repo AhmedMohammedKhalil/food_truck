@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('follows', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('readable')->default(0);
             $table->integer('ft_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->foreign('ft_id')

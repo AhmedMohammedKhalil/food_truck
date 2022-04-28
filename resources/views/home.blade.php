@@ -16,126 +16,32 @@
 <section class="about-area ptb-100">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-6">
-                <div class="about-content">
-                    <span>من نحن</span>
-                    <h3>موقع يقدم عربات الطعام الموجوده فى جميع انحاء الكويت</h3>
+            <div class="col-lg-3 col-md-12">
+                <div class="about-image">
+                    <img style="height:200px"  src="{{ asset('assets/img/about-2.jpg') }}" alt="image">
                 </div>
             </div>
 
-            <div class="col-lg-6">
-                <div class="about-image">
-                    <img src="{{ asset('assets/img/about.jpg') }}" alt="image">
+            <div class="col-lg-6 col-md-12">
+                <div class="about-content mt-5">
+                    <span class="d-block text-center">من نحن</span>
+                    <h3 class="text-center">موقع يقدم عربات الطعام الموجوده فى جميع انحاء الكويت</h3>
+                </div>
+            </div>
 
-                    <div class="shape">
-                        <img src="assets/img/about/shape.png" alt="image">
-                    </div>
+            <div class="col-lg-3 d-lg-block d-none">
+                <div class="about-image">
+                    <img style="height:200px" src="{{ asset('assets/img/about.jpg') }}" alt="image">
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!-- End About Area -->
+@push('col') col-lg-3 @endpush
+@push('message')ستكون عربات الطعام متاحه قريبا  @endpush
 
-<!-- Start shop2 Shop Area -->
-<section class="shop2-area ptb-100">
-    <div class="container">
-        <div class="section-title">
-            <span>عربات الطعام</span>
-            <h2>جميع عربات الطعام</h2>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="shop2-item">
-                    <div class="image">
-                        <img src="{{ asset('assets/img/foodtrucks/truck1.png') }}" alt="image">
-
-                       <div class="shop2-btn">
-                            <a href="shop.html" class="default-btn">
-                                <i class="flaticon-play-button"></i>
-                                للمزيد
-                                <span></span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="content">
-                        <h3>عربة طعام</h3>
-                        <p>تفاصيل</p>
-                        <span>صاحب العربة</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="shop2-item">
-                    <div class="image">
-                        <img src="{{ asset('assets/img/foodtrucks/truck2.jpg') }}" alt="image">
-                        <div class="shop2-btn">
-                            <a href="shop.html" class="default-btn">
-                                <i class="flaticon-play-button"></i>
-                                للمزيد
-                                <span></span>
-                            </a>
-                        </div>
-                    </div>
-
-                   <div class="content">
-                        <h3>عربة طعام</h3>
-                        <p>تفاصيل</p>
-                        <span>صاحب العربة</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="shop2-item">
-                    <div class="image">
-                        <img src="{{ asset('assets/img/foodtrucks/truck1.png') }}" alt="image">
-                        <div class="shop2-btn">
-                            <a href="shop.html" class="default-btn">
-                                <i class="flaticon-play-button"></i>
-                                للمزيد
-                                <span></span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="content">
-                        <h3>عربة طعام</h3>
-                        <p>تفاصيل</p>
-                        <span>صاحب العربة</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="shop2-item">
-                    <div class="image">
-                        <img src="{{ asset('assets/img/foodtrucks/truck2.jpg') }}" alt="image">
-                        <div class="shop2-btn">
-                            <a href="shop.html" class="default-btn">
-                                <i class="flaticon-play-button"></i>
-                                للمزيد
-                                <span></span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="content">
-                        <h3>عربة طعام</h3>
-                        <p>تفاصيل</p>
-                        <span>صاحب العربة</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-</section>
-<!-- End shop2 Shop Area -->
+@include('foodtrucks')
 
 @endsection
 

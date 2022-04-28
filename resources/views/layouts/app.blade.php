@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico') }}" type="image/x-icon">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -37,11 +38,36 @@
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
     <!-- RTL CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/rtl.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+
     <livewire:styles />
     <Style>
         input[type='file']{
             height: auto !important;
         }
+
+        .cart-buttons .default-btn:hover {
+            background-color: black
+        }
+
+        .page-title-area {
+            background-position: unset
+        }
+
+        .nice-select, .nice-select option , .nice-select ul li{
+            text-align: right !important;
+            padding-right: 15px
+        }
+
+        .nice-select ul {right:0; left: unset !important;}
+
+        .nice-select:after{
+            right: unset !important;
+            left: 12px !important;
+        }
+
+
+
     </Style>
     @stack('css')
     <title>{{ config('app.name', 'Food Truck KW') }}</title>
@@ -61,7 +87,7 @@
 
     <!-- Start Navbar Area -->
     <div class="navbar-area">
-        <div class="main-responsive-nav">
+        <div class="main-responsive-nav" dir="ltr">
             <div class="container">
                 <div class="main-responsive-menu">
                     <div class="logo">
@@ -73,7 +99,7 @@
             </div>
         </div>
 
-        <div class="main-navbar">
+        <div class="main-navbar" dir="ltr">
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href="{{  route('home') }}">
@@ -91,13 +117,13 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="" class="nav-link">
-                                    عربات الطعام
+                                <a href="{{ route('search') }}" class="nav-link">
+                                    بحث
                                 </a>
                             </li>
                             @if(!auth('admin')->check() && !auth('user')->check())
-                            <li class="nav-item">
-                                <a class="nav-link" style="cursor: pointer;margin-top: -4px;">
+                            <li class="nav-item ms-2">
+                                <a class="nav-link" style=" direction:rtl; cursor: pointer;margin-top: -4px;">
                                         تسجيل دخول
                                         <i class='bx bx-chevron-down'></i>
                                 </a>
@@ -125,9 +151,10 @@
 
                             </li>
                             @else
+
                                 @auth('admin')
-                                    <li class="nav-item " >
-                                        <a class="nav-link" style="cursor: pointer;margin-top: -4px;">
+                                    <li class="nav-item ms-2" >
+                                        <a class="nav-link" style="direction:rtl;cursor: pointer;margin-top: -4px;">
                                             {{ auth('admin')->user()->name }}
                                             <i class='bx bx-chevron-down'></i>
                                         </a>
@@ -149,8 +176,20 @@
                                     </li>
                                 @endauth
                                 @auth('user')
-                                    <li class="nav-item">
-                                        <a class="nav-link" style="cursor: pointer; margin-top: -4px;">
+                                    @if(auth('user')->user()->type  == 'owner' && auth('user')->user()->food_truck)
+                                        <div class="others-options d-flex align-items-center">
+                                            <div class="option-item">
+                                                <div class="cart-btn">
+                                                    <a href="{{ route('user.followers') }}">
+                                                            <i class="bx bx-bell"></i>
+                                                            @livewire('user.notification' , ['user_id' => auth('user')->user()->id])
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    <li class="nav-item ms-2">
+                                        <a class="nav-link" style="direction:rtl;cursor: pointer; margin-top: -4px;">
                                             {{ auth('user')->user()->name }}
                                             <i class='bx bx-chevron-down'></i>
                                         </a>
@@ -193,9 +232,8 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-6">
                         <p>
-                            Food Truck Kw
-                            &copy;
-                            جميع الحقوق محفوظة
+                            Food Truck KW @ 2022
+                            الحقوق محفوظة &copy;
                         </p>
                     </div>
                 </div>
@@ -213,8 +251,12 @@
 
     <!-- Scripts -->
 
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+
     <!-- Jquery Slim JS -->
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.waypoints.min.js') }}"></script>
+
     <!-- Bootstrap JS -->
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <!-- Meanmenu JS -->
@@ -237,9 +279,14 @@
     <script src="{{ asset('assets/js/contact-form-script.js') }}"></script>
     <!-- Wow JS -->
     <script src="{{ asset('assets/js/wow.min.js') }}"></script>
+    <!--Counterup-->
+    <script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
     <!-- Custom JS -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <livewire:scripts />
+    <script src="{{ mix('js/app.js') }}" ></script>
+
+
     @stack('js')
 
 </body>

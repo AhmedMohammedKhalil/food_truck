@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
 @stack('title')
-
 <section class="event-details-area ptb-100">
     <div class="container">
         <div class="row">

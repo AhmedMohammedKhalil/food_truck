@@ -21,5 +21,35 @@
 <!-- End Page Title Area -->
 @endpush
 @section('article')
+<section class="fun-facts-area pt-100 pb-70" style="background: #50d3ff">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-fun-fact">
+                    <h3>
+                        <span class="counter">{{ $trucksCount }}</span>
+                    </h3>
+                    <p><a href="{{ route('admin.foodtrucks.all') }}">عربات الطعام</a></p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-fun-fact">
+                    <h3>
+                        <span class="counter" >{{ $usersCount }}</span>
+                    </h3>
+                    <p><a href="{{ route('admin.users.index') }}">المستخدمين</a></p>
+                </div>
+            </div>
 
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-fun-fact">
+                    <h3>
+                        <span class="counter" >{{ $regionsCount }}</span>
+                    </h3>
+                    <p><a href="{{ route('admin.regions.index') }}">المناطق</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 @endsection
