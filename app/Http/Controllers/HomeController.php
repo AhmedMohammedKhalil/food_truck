@@ -24,4 +24,8 @@ class HomeController extends Controller
         $foodtruck = FoodTruck::whereId($r->id)->first();
         return view('truckdetails', compact('foodtruck'));
     }
+
+    public function search() {
+        return view('search');
+    }
 }

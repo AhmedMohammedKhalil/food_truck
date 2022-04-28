@@ -1,4 +1,4 @@
-@extends('users.layout')
+@extends('admins.layout')
 @push('css')
     <style>
         .cart-table table {
@@ -13,7 +13,7 @@
         <div class="d-table-cell">
             <div class="container">
                 <div class="page-title-content">
-                    <h2>الأشخاص المتابعين</h2>
+                    <h2>المستخدمين</h2>
                 </div>
             </div>
         </div>
@@ -30,11 +30,11 @@
 @section('article')
 <section class="cart-area ptb-50">
     <div class="container">
-        @if($followers->count() > 0)
+        @if($users->count() > 0)
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div>
-                        <h2 class="text-center pb-3">الأشخاص المتابعين</h2>
+                        <h2 class="text-center pb-3">المستخدمين</h2>
                     </div>
                     <div class="cart-table table-responsive">
                         <table class="table table-bordered">
@@ -42,21 +42,29 @@
                                 <tr>
                                     <th scope="col">الإسم</th>
                                     <th scope="col">عربة الطعام</th>
+                                    <th scope="col">صاحب عربة طعام؟</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($followers as $f)
+                                @foreach ($users as $u)
                                 <tr>
                                     <td>
-                                        <a href="{{ route('user.followers.show',['id'=>$f->id]) }}">
-                                            <span>{{ $f->name }}</span>
+                                        <a href="{{ route('admin.users.show',['id'=>$u->id]) }}">
+                                            <span>{{ $u->name }}</span>
                                         </a>
                                     </td>
                                     <td>
-                                        @if($f->food_truck)
-                                            <a href="{{ route('truck.details',['id'=>$f->food_truck->id]) }}">
-                                                <span>{{ $f->food_truck->name }}</span>
+                                        @if($u->food_truck)
+                                            <a href="{{ route('truck.details',['id'=>$u->food_truck->id]) }}">
+                                                <span>{{ $u->food_truck->name }}</span>
                                             </a>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($u->type == "owner")
+                                            <span>نعم</span>
+                                        @else
+                                            <span>لا</span>
                                         @endif
                                     </td>
                                 </tr>

@@ -9,7 +9,13 @@
                     <a href="{{ route('user.food_truck.create') }}">عربة الطعام</a>
                 @endif
             </li>
+            <li>
+                <a href="{{ route('user.followers') }}">الأشخاص المتابعين</a>
+            </li>
         @endif
+            <li>
+                <a href="{{ route('user.followings') }}">عربات الطعام التى تتابعها</a>
+            </li>
             <li>
                 <a href="{{ route('user.profile') }}">البروفايل</a>
             </li>

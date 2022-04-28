@@ -34,15 +34,17 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function rate()
+    public function rates()
     {
-        return $this->belongsToMany(Rate::class, 'rates')
-            ->withTimestamps();
+        return $this->belongsToMany(FoodTruck::class, 'rates','user_id','ft_id')
+        ->withPivot('rate')
+        ->withTimestamps();
     }
 
-    public function follow()
+    public function following()
     {
-        return $this->belongsToMany(Follow::class, 'follows')
+        return $this->belongsToMany(FoodTruck::class, 'follows','user_id','ft_id')
+            ->withPivot('readable')
             ->withTimestamps();
     }
 

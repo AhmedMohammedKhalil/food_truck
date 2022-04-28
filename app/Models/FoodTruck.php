@@ -27,15 +27,17 @@ class FoodTruck extends Model
 
 
 
-    public function rate()
+    public function rates()
     {
-        return $this->belongsToMany(Rate::class, 'rates','ft_id')
+        return $this->belongsToMany(User::class, 'rates','ft_id')
+        ->withPivot('rate')
         ->withTimestamps();
     }
 
-    public function follow()
+    public function followers()
     {
-        return $this->belongsToMany(Follow::class, 'follows','ft_id')
+        return $this->belongsToMany(User::class, 'follows','ft_id')
+        ->withPivot('readable')
         ->withTimestamps();
     }
 

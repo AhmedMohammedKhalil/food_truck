@@ -144,6 +144,7 @@ jQuery(function($) {
         });
     });
 
+
     // Tabs
     (function($) {
         $('.tab ul.tabs').addClass('active').find('> li:eq(0)').addClass('current');
@@ -437,6 +438,9 @@ jQuery(function($) {
     jQuery(window).on('load', function() {
         $('.preloader').fadeOut();
     });
+
+    $('.counter').counterUp();
+
 
 }(jQuery));
 

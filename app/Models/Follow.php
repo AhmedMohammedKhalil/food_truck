@@ -17,5 +17,6 @@ class Follow extends Model
     protected $fillable = [
         'user_id',
         'ft_id',
+        'readable'
     ];
 }

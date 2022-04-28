@@ -1,4 +1,4 @@
-@extends('users.layout')
+@extends('admins.layout')
 @push('title')
 <!-- Start Page Title Area -->
 <div class="page-title-area item-bg-1">

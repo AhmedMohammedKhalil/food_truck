@@ -32,7 +32,7 @@ class Login extends Component
         if (Auth::guard('admin')->attempt($validatedData)) {
 
             session()->flash('message', "تم تسجيل الدخول بنجاح");
-            return redirect()->route('home');
+            return redirect()->route('admin.dashboard');
         } else {
             session()->flash('error', 'الايميل او كلمة السر غير صحيح');
         }

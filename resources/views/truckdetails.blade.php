@@ -15,7 +15,7 @@
         <img src="{{ asset('assets/img/page-title/down-shape.png') }}" alt="image">
     </div>
     <div class="page-title-shape-2">
-        <img src="{{ asset('assets/img/page-title/down-shape2.png') }}" alt="image">
+        <img src="{{ asset('assets/img/page-title/down-shape-2.png') }}" alt="image">
     </div>
 </div>
 <!-- End Page Title Area -->
@@ -74,11 +74,7 @@
                                             <li>
                                                 <span>رقم الموبايل : </span> {{ $foodtruck->phone }}
                                             </li>
-                                            <li>
-                                                <span>الحالة : </span> @if($foodtruck->status == 0) لم يتم القبول بعد
-                                                @elseif ($foodtruck->status == 1) تم القبول @else تم الرفض قد يكون
-                                                الترخيص مزيف @endif
-                                            </li>
+
                                             @if($foodtruck->facebook)
                                             <li>
                                                 <span>فيسبوك : </span> {{ $foodtruck->facebook }}
@@ -92,7 +88,27 @@
                                                 <span>مواعيد العمل : </span>
                                                 <p>{{ $foodtruck->worktime }}</p>
                                             </li>
+                                            <li>
+                                                <span>التقييم : </span>
+                                                @livewire('user.rating',['truckid' => $foodtruck->id])
+                                            </li>
+
                                         </ul>
+                                    </div>
+                                    <div class="product-details-desc">
+                                        <div class="product-add-to-cart d-flex">
+                                            @if(auth('user')->check())
+                                                @if(auth('user')->user()->type == 'user')
+                                                    @livewire('user.rate', ['truckid' => $foodtruck->id])
+                                                @endif
+                                                @if(auth('user')->user()->id != $foodtruck->owner->id)
+                                                    @livewire('user.follow', ['truckid' => $foodtruck->id])
+                                                @endif
+                                            @endif
+                                        </div>
+                                        <div>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>

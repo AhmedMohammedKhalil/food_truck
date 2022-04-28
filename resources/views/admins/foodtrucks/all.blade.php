@@ -1,4 +1,11 @@
 @extends('admins.layout')
+@push('css')
+    <style>
+        .cart-table table {
+            text-align:center;
+        }
+    </style>
+@endpush
 @push('title')
 <!-- Start Page Title Area -->
 <div class="page-title-area item-bg-1">
@@ -27,7 +34,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div>
-                        <h2 class="text-center">عربات الطعام المضافة حديثا</h2>
+                        <h2 class="text-center pb-3">عربات الطعام المضافة حديثا</h2>
                     </div>
                     <div class="cart-table table-responsive">
                         <table class="table table-bordered">
@@ -73,7 +80,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12">
                 <div>
-                    <h2 class="text-center">عربات الطعام المرفوضة</h2>
+                    <h2 class="text-center pb-3">عربات الطعام المرفوضة</h2>
                 </div>
                 <div class="cart-table table-responsive">
                     <table class="table table-bordered">
@@ -115,7 +122,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12">
                 <div>
-                    <h2 class="text-center">عربات الطعام المتاحة</h2>
+                    <h2 class="text-center pb-3">عربات الطعام المتاحة</h2>
                 </div>
                 <div class="cart-table table-responsive">
                     <table class="table table-bordered">

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/search', 'HomeController@search')->name('search');
 Route::get('/truck_details', 'HomeController@showtruckDetails')->name('truck.details');
 Route::middleware(['guest:admin','guest:user'])->group(function(){
     Route::get('/admin/login', 'AdminController@showLogin')->name('admin.login');
@@ -35,6 +36,11 @@ Route::middleware(['auth:admin'])->name('admin.')->prefix('admin')->group(functi
         Route::get('/delete', 'RegionController@destroy')->name('destroy');
     });
 
+    Route::prefix('/users')->name('users.')->group(function () {
+        Route::get('/', 'AdminController@showUsers')->name('index');
+        Route::get('/show', 'AdminController@getUser')->name('show');
+    });
+
     Route::prefix('/foodtrucks')->name('foodtrucks.')->group(function () {
         Route::get('/', 'FoodTruckController@allFoodTrucks')->name('all');
         Route::get('/show', 'FoodTruckController@showFoodTruck')->name('show');
@@ -50,6 +56,11 @@ Route::middleware(['auth:user'])->name('user.')->prefix('user')->group(function 
     Route::get('/profile', 'UserController@profile')->name('profile');
     Route::get('/settings', 'UserController@settings')->name('settings');
     Route::get('/logout', 'UserController@logout')->name('logout');
+    Route::get('/followers','FollowController@followers')->name('followers');
+    Route::get('/followers/show','FollowController@show')->name('followers.show');
+
+    Route::get('/followings','FollowController@followings')->name('followings');
+
 
     Route::prefix('/food_truck')->name('food_truck.')->group(function() {
         Route::get('/', 'FoodTruckController@index')->name('index');
